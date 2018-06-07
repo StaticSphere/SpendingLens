@@ -19,6 +19,7 @@ class Application {
             slashes: true
         }));
         this.mainWindow.on('close', () => this.mainWindow = null);
+        this.mainWindow.webContents.openDevTools();
     }
 
     start(): void {

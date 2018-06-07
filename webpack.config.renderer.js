@@ -10,7 +10,7 @@ module.exports = {
         __filename: false
     },
 
-    entry: './src/renderer/main.ts',
+    entry: './src/renderer/main.tsx',
 
     output: {
         path: path.join(__dirname, 'dist'),
