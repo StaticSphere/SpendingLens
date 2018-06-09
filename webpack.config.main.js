@@ -1,3 +1,4 @@
+/* eslint-disable */
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -9,7 +10,7 @@ module.exports = {
         __filename: false
     },
 
-    entry: './src/main/main.ts',
+    entry: './src/main/main.js',
 
     output: {
         path: path.join(__dirname, 'dist'),
@@ -17,7 +18,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.ts']
+        extensions: ['.js']
     },
 
     devtool: 'source-map',
@@ -25,14 +26,15 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /.tsx?$/,
-                loader: 'awesome-typescript-loader',
-                exclude: /node_modules/
+                test: /\.js$/,
+                enforce: 'pre',
+                exclude: /node_modules/,
+                loader: 'eslint-loader'
             },
             {
-                enforce: "pre",
                 test: /\.js$/,
-                loader: "source-map-loader" 
+                exclude: /node_modules/,
+                loader: 'babel-loader'
             }
         ]
     },

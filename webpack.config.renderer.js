@@ -1,3 +1,4 @@
+/* eslint-disable */
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,7 +11,7 @@ module.exports = {
         __filename: false
     },
 
-    entry: './src/renderer/main.tsx',
+    entry: './src/renderer/main.jsx',
 
     output: {
         path: path.join(__dirname, 'dist'),
@@ -18,7 +19,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.tsx', '.ts', '.js']
+        extensions: ['.jsx', '.js']
     },
 
     devtool: 'source-map',
@@ -26,14 +27,15 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /.tsx?$/,
-                loader: 'awesome-typescript-loader',
-                exclude: /node_modules/
+                test: /\.jsx?$/,
+                enforce: 'pre',
+                exclude: /node_modules/,
+                loader: 'eslint-loader'
             },
             {
-                enforce: "pre",
-                test: /\.js$/,
-                loader: "source-map-loader" 
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader'
             }
         ]
     },
