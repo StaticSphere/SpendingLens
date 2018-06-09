@@ -1,0 +1,37 @@
+env:
+  browser: true
+  es6: true
+extends: 
+  - 'eslint:recommended'
+  - 'plugin:react/recommended'
+  - 'plugin:jest/recommended'
+  - 'plugin:node/recommended'
+parser: 'babel-eslint'
+parserOptions:
+  ecmaFeatures:
+    experimentalObjectRestSpread: true
+    jsx: true
+  sourceType: module
+globals:
+  module: false
+plugins:
+  - react
+  - jest
+  - node
+rules:
+  indent:
+    - error
+    - 4
+  linebreak-style:
+    - error
+    - windows
+  quotes:
+    - error
+    - single
+  semi:
+    - error
+    - always
+  node/exports-style:
+    - error
+    - module.exports
+  node/no-unsupported-features: off

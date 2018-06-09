@@ -1,17 +1,15 @@
-import { app, BrowserWindow, MenuItemConstructorOptions, Menu } from 'electron';
-import * as url from 'url';
-import * as path from 'path';
+import { app, BrowserWindow, Menu } from 'electron';
+import url from 'url';
+import path from 'path';
 import { menuTemplate } from './menus';
 
 class Application {
-    private mainWindow: BrowserWindow;
-
-    private onWindowAllClosed(): void {
+    onWindowAllClosed() {
         if (process.platform !== 'darwin')
             app.quit();
     }
 
-    private onReady(): void {
+    onReady() {
         this.mainWindow = new BrowserWindow({ width: 800, height: 600});
         this.mainWindow.loadURL(url.format({
             pathname: path.join(__dirname, 'index.html'),
@@ -22,7 +20,7 @@ class Application {
         this.mainWindow.webContents.openDevTools();
     }
 
-    start(): void {
+    start() {
         app.on('window-all-closed', this.onWindowAllClosed);
         app.on('ready', this.onReady);
 

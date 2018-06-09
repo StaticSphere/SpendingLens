@@ -1,6 +1,6 @@
-import { MenuItemConstructorOptions, app } from "electron";
+import { app } from 'electron';
 
-export const fileMenu: MenuItemConstructorOptions = {
+export const fileMenu = {
     label: 'File',
     submenu: [
         {
